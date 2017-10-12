@@ -1,13 +1,13 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(roscpp_serialization)
-find_package(catkin REQUIRED COMPONENTS cpp_common roscpp_traits rostime)
+find_package(catkin REQUIRED COMPONENTS cpp_common)
 catkin_package(
   INCLUDE_DIRS include
   LIBRARIES roscpp_serialization
-  CATKIN_DEPENDS cpp_common roscpp_traits rostime
+  CATKIN_DEPENDS cpp_common
 )
 
-include_directories(include ${catkin_INCLUDE_DIRS})
+include_directories(include ${catkin_INCLUDE_DIRS} ../roscpp_traits/include ../rostime/include)
 link_directories(${catkin_LIBRARY_DIRS})
 
 add_library(roscpp_serialization src/serialization.cpp)
