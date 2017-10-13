@@ -40,7 +40,6 @@ Group:          Development/Libraries
 BuildRequires:  gcc-c++
 BuildRequires:  boost-devel
 BuildRequires:  ros-kinetic-catkin
-BuildRequires:  ros-kinetic-cpp-common
 BuildRequires:  pkgconfig(console_bridge)
 Requires:       libconsole_bridge0
 Requires:       ros-kinetic-cpp-common
@@ -55,7 +54,6 @@ Group:          Development/Libraries
 BuildRequires:  gcc-c++
 BuildRequires:  boost-devel
 BuildRequires:  ros-kinetic-catkin
-BuildRequires:  ros-kinetic-cpp-common
 BuildRequires:  pkgconfig(console_bridge)
 Requires:       ros-kinetic-cpp-common
 Requires:       ros-kinetic-roscpp-traits
@@ -151,7 +149,6 @@ popd
 %files -f cpp_common/build/install_manifest.txt
 %manifest %{name}.manifest
 %defattr(-,root,root)
-#%{install_path}/lib/python2.7/site-packages/*
 
 %files traits -f roscpp_traits/build/install_manifest.txt
 %manifest %{name}.manifest
