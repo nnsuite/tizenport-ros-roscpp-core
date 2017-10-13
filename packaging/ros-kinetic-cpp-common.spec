@@ -24,17 +24,16 @@ related, but are useful for multiple packages. This includes things like the
 ROS_DEPRECATED and ROS_FORCE_INLINE macros, as well as code for getting
 backtraces. This package is a component of roscpp.
 
-%package        traits
+%package    -n  ros-kinetic-roscpp-traits
 Summary:        ROS cpp traits package
 Group:          Development/Libraries
 BuildRequires:  gcc-c++
 BuildRequires:  ros-kinetic-catkin
-Provides:      ros-kinetic-roscpp-traits
 
-%description    traits
+%description -n ros-kinetic-roscpp-traits
 This package is a traits component of roscpp.
 
-%package        rostime
+%package    -n  ros-kinetic-roscpp-rostime
 Summary:        ROS time package
 Group:          Development/Libraries
 BuildRequires:  gcc-c++
@@ -43,12 +42,11 @@ BuildRequires:  ros-kinetic-catkin
 BuildRequires:  pkgconfig(console_bridge)
 Requires:       libconsole_bridge0
 Requires:       ros-kinetic-cpp-common
-Provides:       ros-kinetic-rostime
 
-%description    rostime
+%description -n ros-kinetic-roscpp-rostime
 This package is a time component of roscpp.
 
-%package        serialization
+%package    -n  ros-kinetic-roscpp-serialization
 Summary:        ROS cpp serialization package
 Group:          Development/Libraries
 BuildRequires:  gcc-c++
@@ -59,9 +57,8 @@ Requires:       ros-kinetic-cpp-common
 Requires:       ros-kinetic-roscpp-traits
 Requires:       ros-kinetic-rostime
 Requires:       libconsole_bridge0
-Provides:       ros-kinetic-roscpp-serialization
 
-%description    serialization
+%description -n ros-kinetic-roscpp-serialization
 This package is a serialization component of roscpp.
 
 %prep
@@ -150,14 +147,15 @@ popd
 %manifest %{name}.manifest
 %defattr(-,root,root)
 
-%files traits -f roscpp_traits/build/install_manifest.txt
+%files -n ros-kinetic-roscpp-traits -f roscpp_traits/build/install_manifest.txt
 %manifest %{name}.manifest
 %defattr(-,root,root)
 
-%files rostime -f rostime/build/install_manifest.txt
+%files -n ros-kinetic-roscpp-rostime -f rostime/build/install_manifest.txt
 %manifest %{name}.manifest
 %defattr(-,root,root)
 
-%files serialization -f roscpp_serialization/build/install_manifest.txt
+%files -n ros-kinetic-roscpp-serialization -f roscpp_serialization/build/install_manifest.txt
 %manifest %{name}.manifest
 %defattr(-,root,root)
+
