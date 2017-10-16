@@ -33,7 +33,7 @@ BuildRequires:  ros-kinetic-catkin
 %description -n ros-kinetic-roscpp-traits
 This package is a traits component of roscpp.
 
-%package    -n  ros-kinetic-roscpp-rostime
+%package    -n  ros-kinetic-rostime
 Summary:        ROS time package
 Group:          Development/Libraries
 BuildRequires:  gcc-c++
@@ -43,7 +43,7 @@ BuildRequires:  pkgconfig(console_bridge)
 Requires:       libconsole_bridge0
 Requires:       ros-kinetic-cpp-common
 
-%description -n ros-kinetic-roscpp-rostime
+%description -n ros-kinetic-rostime
 This package is a time component of roscpp.
 
 %package    -n  ros-kinetic-roscpp-serialization
@@ -151,7 +151,7 @@ popd
 %manifest %{name}.manifest
 %defattr(-,root,root)
 
-%files -n ros-kinetic-roscpp-rostime -f rostime/build/install_manifest.txt
+%files -n ros-kinetic-rostime -f rostime/build/install_manifest.txt
 %manifest %{name}.manifest
 %defattr(-,root,root)
 
