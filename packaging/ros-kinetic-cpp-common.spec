@@ -11,7 +11,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  boost-devel
 BuildRequires:  ros-kinetic-catkin
 BuildRequires:  pkgconfig(console_bridge)
-Requires:       libconsole_bridge0
+Requires:       libconsole-bridge0
 Requires:       pkgconfig(console_bridge)
 
 %define         ros_distro kinetic
@@ -40,7 +40,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  boost-devel
 BuildRequires:  ros-kinetic-catkin
 BuildRequires:  pkgconfig(console_bridge)
-Requires:       libconsole_bridge0
+Requires:       libconsole-bridge0
 Requires:       ros-kinetic-cpp-common
 
 %description -n ros-kinetic-rostime
@@ -56,7 +56,7 @@ BuildRequires:  pkgconfig(console_bridge)
 Requires:       ros-kinetic-cpp-common
 Requires:       ros-kinetic-roscpp-traits
 Requires:       ros-kinetic-rostime
-Requires:       libconsole_bridge0
+Requires:       libconsole-bridge0
 
 %description -n ros-kinetic-roscpp-serialization
 This package is a serialization component of roscpp.
