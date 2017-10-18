@@ -14,10 +14,6 @@ BuildRequires:  pkgconfig(console_bridge)
 Requires:       libconsole-bridge0
 Requires:       pkgconfig(console_bridge)
 
-%define         ros_distro kinetic
-%define         ros_root /opt/ros
-%define         install_path %{ros_root}/%{ros_distro}
-	
 %description
 cpp_common contains C++ code for doing things that are not necessarily ROS
 related, but are useful for multiple packages. This includes things like the
@@ -66,81 +62,41 @@ This package is a serialization component of roscpp.
 cp %{SOURCE1001} .
 
 %build
-# In case we're installing to a non-standard location, look for a setup.sh
-# in the install tree that was dropped by catkin, and source it.  It will
-# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
-if [ -f "/usr/setup.sh" ]; then . "/usr/setup.sh"; fi
-pushd cpp_common
-mkdir build && cd build
-cmake .. \
-        -DCMAKE_INSTALL_PREFIX="%{install_path}" \
-        -DCMAKE_PREFIX_PATH="%{install_path}" \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_BUILD_BINARY_PACKAGE="1" \
+%{__ros_setup}
 
-make %{?_smp_mflags}
+pushd cpp_common
+%{__ros_build}
 popd
 
 pushd roscpp_traits
-mkdir build && cd build
-cmake .. \
-        -DCMAKE_INSTALL_PREFIX="%{install_path}" \
-        -DCMAKE_PREFIX_PATH="%{install_path}" \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_BUILD_BINARY_PACKAGE="1" \
-
-make %{?_smp_mflags}
+%{__ros_build}
 popd
 
 pushd rostime
-mkdir build && cd build
-cmake .. \
-        -DCMAKE_INSTALL_PREFIX="%{install_path}" \
-        -DCMAKE_PREFIX_PATH="%{install_path}" \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_BUILD_BINARY_PACKAGE="1" \
-
-make %{?_smp_mflags}
+%{__ros_build}
 popd
 
 pushd roscpp_serialization
-mkdir build && cd build
-cmake .. \
-        -DCMAKE_INSTALL_PREFIX="%{install_path}" \
-        -DCMAKE_PREFIX_PATH="%{install_path}" \
-        -DSETUPTOOLS_DEB_LAYOUT=OFF \
-        -DCATKIN_BUILD_BINARY_PACKAGE="1" \
-
-make %{?_smp_mflags}
+%{__ros_build}
 popd
 
 %install
-# In case we're installing to a non-standard location, look for a setup.sh
-# in the install tree that was dropped by catkin, and source it.  It will
-# set things like CMAKE_PREFIX_PATH, PKG_CONFIG_PATH, and PYTHONPATH.
-if [ -f "/usr/setup.sh" ]; then . "/usr/setup.sh"; fi
+%{__ros_setup}
+
 pushd cpp_common
-pushd build
-make install DESTDIR=%{buildroot}
-popd
+%{__ros_install}
 popd
 
 pushd roscpp_traits
-pushd build
-make install DESTDIR=%{buildroot}
-popd
+%{__ros_install}
 popd
 
 pushd rostime
-pushd build
-make install DESTDIR=%{buildroot}
-popd
+%{__ros_install}
 popd
 
 pushd roscpp_serialization
-pushd build
-make install DESTDIR=%{buildroot}
-popd
+%{__ros_install}
 popd
 
 %files -f cpp_common/build/install_manifest.txt
